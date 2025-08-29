@@ -18,7 +18,7 @@ import {
 
 const { MockDb, PancakeV3Pool } = TestHelpers;
 const logIndex = 1000;
-const txFrom = '0xa79d3B28A109F0E3E4919c9715748dB6D88f313f';
+const txFrom = '0xa79d3b28a109f0e3e4919c9715748db6d88f313f';
 const txHash = "0xd6005a794596212a1bdc19178e04e18eb8e9e0963d7073303bcb47d6186e757e";
 
 interface MintFixture {

@@ -3,17 +3,17 @@ import { BigDecimal } from "generated";
 // Chain IDs
 export enum ChainId {
   MAINNET = 1,
-  ARBITRUM_ONE = 42161,
-  OPTIMISM = 10,
-  BASE = 8453,
-  MATIC = 137,
+  // ARBITRUM_ONE = 42161,
+  // OPTIMISM = 10,
+  // BASE = 8453,
+  // MATIC = 137,
   BSC = 56,
-  AVALANCHE = 43114,
-  BLAST = 81457,
-  ZORA = 7777777,
-  WORLD = 59144,
-  UNICHAIN = 130,
-  SONEIUM = 1868,
+  // AVALANCHE = 43114,
+  // BLAST = 81457,
+  // ZORA = 7777777,
+  // WORLD = 59144,
+  // UNICHAIN = 130,
+  // SONEIUM = 1868,
 }
 
 // Native token details interface
@@ -52,7 +52,7 @@ export interface StaticTokenDefinition {
 export const CHAIN_CONFIGS: { [chainId: number]: ChainConfig } = {
   [ChainId.MAINNET]: {
     factoryAddress: "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
-    stablecoinWrappedNativePoolId: "0x702283A9B82445EAAB6A2C7abFA8551bF4AB9f3b",
+    stablecoinWrappedNativePoolId: "0x1ac1a8feaaaea1900c4166deeed0c11cc10669d36",
     stablecoinIsToken0: true,
     wrappedNativeAddress: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", // WETH
     minimumNativeLocked: new BigDecimal("20"),
@@ -131,6 +131,7 @@ export const CHAIN_CONFIGS: { [chainId: number]: ChainConfig } = {
       name: "Ethereum",
       decimals: BigInt(18),
     },
+  },
   // [ChainId.ARBITRUM_ONE]: {
   //   factoryAddress: "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
   //   stablecoinWrappedNativePoolId: "0x17c14d2c404d167802b16c450d3c99f88f2c4f4d",
@@ -159,7 +160,7 @@ export const CHAIN_CONFIGS: { [chainId: number]: ChainConfig } = {
   //     name: "Ethereum",
   //     decimals: BigInt(18),
   //   },
-  },
+  // },
   // [ChainId.OPTIMISM]: {
   //   factoryAddress: "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
   //   stablecoinWrappedNativePoolId: "0x03af20bdaaffb4cc0a521796a223f7d85e2aac31",
@@ -204,7 +205,7 @@ export const CHAIN_CONFIGS: { [chainId: number]: ChainConfig } = {
   // },
   // [ChainId.BASE]: {
   //   factoryAddress: "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
-  //   stablecoinWrappedNativePoolId: "0xE9d76696f8A35e2E2520e3125875C3af23f1E69c",
+  //   stablecoinWrappedNativePoolId: "0xf6c0a374a483101e04ef5f7ac9bd15d9142bac95",
   //   stablecoinIsToken0: false,
   //   wrappedNativeAddress: "0x4200000000000000000000000000000000000006", // WETH
   //   minimumNativeLocked: new BigDecimal("4"),
@@ -277,7 +278,7 @@ export const CHAIN_CONFIGS: { [chainId: number]: ChainConfig } = {
       name: "Binance Coin",
       decimals: BigInt(18),
     },
-  }
+  },
   // [ChainId.AVALANCHE]: {
   //   factoryAddress: "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
   //   stablecoinWrappedNativePoolId: "0xfae3f424a0a47706811521e3ee268f00cfb5c45e",
@@ -312,6 +313,7 @@ export const CHAIN_CONFIGS: { [chainId: number]: ChainConfig } = {
   //     decimals: BigInt(18),
   //   },
   // },
+
   // [ChainId.BLAST]: {
   //   factoryAddress: "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
   //   stablecoinWrappedNativePoolId: "0xf52b4b69123cbcf07798ae8265642793b2e8990c",

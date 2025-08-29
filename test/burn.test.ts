@@ -18,7 +18,7 @@ import {
 
 const { MockDb, PancakeV3Pool } = TestHelpers;
 const logIndex = 1000;
-const txFrom = '0xa79d3B28A109F0E3E4919c9715748dB6D88f313f';
+const txFrom = '0xa79d3b28a109f0e3e4919c9715748db6d88f313f';
 const txHash = "0x26b168e005a168b28d518675435c9f51816697c086deef7377e0018e4eb65dc9";
 
 interface BurnFixture {

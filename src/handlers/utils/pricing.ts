@@ -11,6 +11,9 @@ export function sqrtPriceX96ToTokenPrices(
   token1: Token,
   nativeTokenDetails: NativeTokenDetails
 ): BigDecimal[] {
+  // Note: This function doesn't have access to context.log, so we'll return the prices
+  // and let the calling handler do the logging
+  
   const token0Decimals =
     token0.id.split('-')[1] === ADDRESS_ZERO ? nativeTokenDetails.decimals : token0.decimals;
   const token1Decimals =
@@ -21,6 +24,7 @@ export function sqrtPriceX96ToTokenPrices(
   const price1 = exponentToBigDecimal(token0Decimals).times(num)
                 .div(exponentToBigDecimal(token1Decimals).times(denom)).dp(4);
   const price0 = safeDiv(new BigDecimal("1"), price1);
+  
   return [price0, price1];
 }
 

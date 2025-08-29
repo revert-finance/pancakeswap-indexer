@@ -12,7 +12,7 @@ const WBTC_MAINNET_ADDRESS = '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599';
 export const USDC_WETH_03_MAINNET_POOL = '0x8ad599c3a0ff1de082011efddc58f1908eb6e6d8';
 export const WBTC_WETH_03_MAINNET_POOL = '0xcbcdf9626bc03e24f779434178a73a0b4bad62ed';
 export const POOL_FEE_TIER_03 = 3000;
-export const chainId = 42161;
+export const chainId = 1;
 export const timestamp = 1722420503;
 export const blockNumber = 317209663;
 
