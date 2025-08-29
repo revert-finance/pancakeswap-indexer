@@ -1,7 +1,7 @@
 import assert from "assert";
 import { 
     Bundle, Token, TestHelpers, BigDecimal, Factory, Pool, Swap, 
-    UniswapDayData, PoolDayData, PoolHourData, TokenDayData, TokenHourData
+    PancakeDayData, PoolDayData, PoolHourData, TokenDayData, TokenHourData
 } from 'generated';
 import { convertTokenToDecimal, safeDiv } from '../src/handlers/utils';
 import { ZERO_BD } from '../src/handlers/utils/constants';
@@ -28,7 +28,7 @@ import {
     blockNumber
 } from './constants';
 
-const { MockDb, UniswapV3Pool } = TestHelpers;
+const { MockDb, PancakeV3Pool } = TestHelpers;
 const logIndex = 1000;
 const txFrom = '0xa79d3B28A109F0E3E4919c9715748dB6D88f313f';
 const txHash = "0xd6005a794596212a1bdc19178e04e18eb8e9e0963d7073303bcb47d6186e757e";
@@ -54,7 +54,7 @@ const SWAP_FIXTURE: SwapFixture = {
     tick: 194071n
 };
 
-const SWAP_EVENT = UniswapV3Pool.Swap.createMockEvent({
+const SWAP_EVENT = PancakeV3Pool.Swap.createMockEvent({
     ...SWAP_FIXTURE,
     mockEventData: {
         srcAddress: USDC_WETH_03_MAINNET_POOL,
@@ -129,7 +129,7 @@ describe('handleSwap', async () => {
         const feesETH = amountTotalETHTRacked.times(feeTierBD).div(new BigDecimal('1000000'));
         const feesUSD = amountTotalUSDTracked.times(feeTierBD).div(new BigDecimal('1000000'));
 
-        const newMockDb = await UniswapV3Pool.Swap.processEvent({ event: SWAP_EVENT, mockDb });
+        const newMockDb = await PancakeV3Pool.Swap.processEvent({ event: SWAP_EVENT, mockDb });
 
         const actualBundle = newMockDb.entities.Bundle.get(chainId.toString())!;
         const newEthPrice = actualBundle.ethPriceUSD;
@@ -238,10 +238,10 @@ describe('handleSwap', async () => {
         const dayId = Math.floor(timestamp / 86400);
         const hourId = Math.floor(timestamp / 3600);
 
-        const uniswapDayData: UniswapDayData = newMockDb.entities.UniswapDayData.get(`${chainId}-${dayId}`)!;
-        assert.deepEqual(uniswapDayData.volumeETH.toString(), amountTotalETHTRacked.toString());
-        assert.deepEqual(uniswapDayData.volumeUSD.toString(), amountTotalUSDTracked.toString());
-        assert.deepEqual(uniswapDayData.feesUSD.toString(), feesUSD.toString());
+        const pancakeswapDayData: PancakeDayData = newMockDb.entities.PancakeDayData.get(`${chainId}-${dayId}`)!;
+        assert.deepEqual(pancakeswapDayData.volumeETH.toString(), amountTotalETHTRacked.toString());
+        assert.deepEqual(pancakeswapDayData.volumeUSD.toString(), amountTotalUSDTracked.toString());
+        assert.deepEqual(pancakeswapDayData.feesUSD.toString(), feesUSD.toString());
         
         const poolDayData: PoolDayData = newMockDb.entities.PoolDayData.get(`${poolId}-${dayId}`)!;
         assert.deepEqual(poolDayData.volumeUSD.toString(), amountTotalUSDTracked.toString());

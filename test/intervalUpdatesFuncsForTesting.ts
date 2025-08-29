@@ -10,10 +10,10 @@ import {
   Token,
   TokenDayData,
   TokenHourData,
-  UniswapDayData,
+  PancakeDayData,
 } from 'generated';
 
-export function updateUniswapDayData(
+export function updatePancakeDayData(
   timestamp: number,
   chainId: number,
   factory: Factory,
@@ -22,8 +22,8 @@ export function updateUniswapDayData(
   const dayNum = Math.floor(timestamp / 86400); // rounded
   const dayStartTimestamp = dayNum * 86400;
   const dayID = `${chainId}-${dayNum}`;
-  let uniswapDayDataRO = mockDb.entities.UniswapDayData.get(dayID);
-  let uniswapDayData = uniswapDayDataRO ? {...uniswapDayDataRO} :
+  let pancakeswapDayDataRO = mockDb.entities.PancakeDayData.get(dayID);
+  let pancakeswapDayData = pancakeswapDayDataRO ? {...pancakeswapDayDataRO} :
                         {
                           id: dayID,
                           date: dayStartTimestamp,
@@ -35,10 +35,10 @@ export function updateUniswapDayData(
                           txCount: ZERO_BI
                         };
 
-  uniswapDayData.tvlUSD = factory.totalValueLockedUSD;
-  uniswapDayData.txCount = factory.txCount;
+  pancakeswapDayData.tvlUSD = factory.totalValueLockedUSD;
+  pancakeswapDayData.txCount = factory.txCount;
 
-  return mockDb.entities.UniswapDayData.set(uniswapDayData);
+  return mockDb.entities.PancakeDayData.set(pancakeswapDayData);
 }
 
 export function updatePoolDayData(

@@ -1,7 +1,7 @@
 import assert from "assert";
 import { 
     Bundle, Factory, Pool, Token, TestHelpers, BigDecimal,
-    UniswapDayData, PoolDayData, PoolHourData, TokenDayData, TokenHourData
+    PancakeDayData, PoolDayData, PoolHourData, TokenDayData, TokenHourData
 } from 'generated';
 import { ADDRESS_ZERO, ZERO_BD, ZERO_BI } from '../src/handlers/utils/constants';
 import {
@@ -9,7 +9,7 @@ import {
     updatePoolHourData,
     updateTokenDayData,
     updateTokenHourData,
-    updateUniswapDayData,
+    updatePancakeDayData,
 } from './intervalUpdatesFuncsForTesting';
 import {
     createAndStoreTestPool,
@@ -25,7 +25,7 @@ import {
 
 const { MockDb } = TestHelpers;
 
-describe('uniswap interval data', () => {
+describe('pancakeswap interval data', () => {
     const factoryId = `${chainId}-${TEST_CONFIG.factoryAddress.toLowerCase()}`;
     const factory: Factory = {
         id: factoryId,
@@ -46,44 +46,44 @@ describe('uniswap interval data', () => {
 
     const mockDb = MockDb.createMockDb().entities.Factory.set(factory);
 
-    it('success - create and update uniswapDayData', () => {
-        // these are the only two fields that get persisted to uniswapDayData, set them to non-zero values
-        const uniswapTxCount = 10n;
-        const uniswapTotalValueLockedUSD = new BigDecimal('100');
+    it('success - create and update pancakeswapDayData', () => {
+        // these are the only two fields that get persisted to pancakeswapDayData, set them to non-zero values
+        const pancakeswapTxCount = 10n;
+        const pancakeswapTotalValueLockedUSD = new BigDecimal('100');
         const factory = {
             ...mockDb.entities.Factory.get(factoryId)!,
-            txCount: uniswapTxCount,
-            totalValueLockedUSD: uniswapTotalValueLockedUSD
+            txCount: pancakeswapTxCount,
+            totalValueLockedUSD: pancakeswapTotalValueLockedUSD
         };
 
         let newMockDb = mockDb.entities.Factory.set(factory);
-        newMockDb = updateUniswapDayData(timestamp, chainId, factory, newMockDb);
+        newMockDb = updatePancakeDayData(timestamp, chainId, factory, newMockDb);
 
         const dayNum = Math.floor(timestamp / 86400);
         const dayStartTimestamp = dayNum * 86400;
         const dayId = `${chainId}-${dayNum}`;
 
-        let uniswapDayData: UniswapDayData = newMockDb.entities.UniswapDayData.get(dayId)!;
-        assert.deepEqual(uniswapDayData.date, dayStartTimestamp);
-        assert.deepEqual(uniswapDayData.volumeETH.toString(), '0');
-        assert.deepEqual(uniswapDayData.volumeUSD.toString(), '0');
-        assert.deepEqual(uniswapDayData.volumeUSDUntracked.toString(), '0');
-        assert.deepEqual(uniswapDayData.feesUSD.toString(), '0');
-        assert.deepEqual(uniswapDayData.tvlUSD.toString(), uniswapTotalValueLockedUSD.toString());
-        assert.deepEqual(uniswapDayData.txCount, uniswapTxCount);
+        let pancakeswapDayData: PancakeDayData = newMockDb.entities.PancakeDayData.get(dayId)!;
+        assert.deepEqual(pancakeswapDayData.date, dayStartTimestamp);
+        assert.deepEqual(pancakeswapDayData.volumeETH.toString(), '0');
+        assert.deepEqual(pancakeswapDayData.volumeUSD.toString(), '0');
+        assert.deepEqual(pancakeswapDayData.volumeUSDUntracked.toString(), '0');
+        assert.deepEqual(pancakeswapDayData.feesUSD.toString(), '0');
+        assert.deepEqual(pancakeswapDayData.tvlUSD.toString(), pancakeswapTotalValueLockedUSD.toString());
+        assert.deepEqual(pancakeswapDayData.txCount, pancakeswapTxCount);
 
         const updatedTxCount = 20n;
         factory.txCount = updatedTxCount;
         newMockDb = newMockDb.entities.Factory.set(factory);
-        newMockDb = updateUniswapDayData(
+        newMockDb = updatePancakeDayData(
             timestamp, 
             chainId, 
             newMockDb.entities.Factory.get(factoryId)!, 
             newMockDb
         );
 
-        uniswapDayData = newMockDb.entities.UniswapDayData.get(dayId)!;
-        assert.deepEqual(uniswapDayData.txCount, updatedTxCount);
+        pancakeswapDayData = newMockDb.entities.PancakeDayData.get(dayId)!;
+        assert.deepEqual(pancakeswapDayData.txCount, updatedTxCount);
     });
 });
 

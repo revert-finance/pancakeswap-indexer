@@ -9,20 +9,20 @@ import {
     Token,
     TokenDayData,
     TokenHourData,
-    UniswapDayData,
+    PancakeDayData,
 } from 'generated';
 
-export async function updateUniswapDayData(
+export async function updatePancakeDayData(
     timestamp: number,
     chainId: number,
     factory: Factory,
     context: handlerContext
-): Promise<UniswapDayData> {
+): Promise<PancakeDayData> {
     const dayNum = Math.floor(timestamp / 86400); // rounded
     const dayStartTimestamp = dayNum * 86400;
     const dayID = `${chainId}-${dayNum}`;
-    let uniswapDayDataRO = await context.UniswapDayData.get(dayID);
-    let uniswapDayData = uniswapDayDataRO ? {...uniswapDayDataRO} :
+    let pancakeswapDayDataRO = await context.PancakeDayData.get(dayID);
+    let pancakeswapDayData = pancakeswapDayDataRO ? {...pancakeswapDayDataRO} :
                         {
                           id: dayID,
                           date: dayStartTimestamp,
@@ -34,11 +34,11 @@ export async function updateUniswapDayData(
                           txCount: ZERO_BI
                         };
 
-    uniswapDayData.tvlUSD = factory.totalValueLockedUSD;
-    uniswapDayData.txCount = factory.txCount;
+    pancakeswapDayData.tvlUSD = factory.totalValueLockedUSD;
+    pancakeswapDayData.txCount = factory.txCount;
 
-    context.UniswapDayData.set(uniswapDayData);
-    return uniswapDayData;
+    context.PancakeDayData.set(pancakeswapDayData);
+    return pancakeswapDayData;
 }
 
 export async function updatePoolDayData(

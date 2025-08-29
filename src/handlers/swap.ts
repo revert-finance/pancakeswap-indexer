@@ -1,11 +1,11 @@
-import { UniswapV3Pool, Token, Pool, Bundle, Factory, BigDecimal, Swap } from "generated";
+import { PancakeV3Pool, Token, Pool, Bundle, Factory, BigDecimal, Swap } from "generated";
 import { CHAIN_CONFIGS } from "./utils/chains";
 import { ONE_BI, ZERO_BI, ZERO_BD } from './utils/constants';
 import { convertTokenToDecimal, loadTransaction, safeDiv } from './utils/index';
 import * as pricing from './utils/pricing';
 import * as intervalUpdates from './utils/intervalUpdates';
 
-UniswapV3Pool.Swap.handlerWithLoader({
+PancakeV3Pool.Swap.handlerWithLoader({
     loader: async ({ event, context }) => {
         const { factoryAddress } = CHAIN_CONFIGS[event.chainId];
         const poolId = `${event.chainId}-${event.srcAddress.toLowerCase()}`;
@@ -207,7 +207,7 @@ UniswapV3Pool.Swap.handlerWithLoader({
         };
 
         // interval data
-        const uniswapDayData = { ...await intervalUpdates.updateUniswapDayData(timestamp, event.chainId, factory, context) };
+        const pancakeswapDayData = { ...await intervalUpdates.updatePancakeDayData(timestamp, event.chainId, factory, context) };
         const poolDayData = { ...await intervalUpdates.updatePoolDayData(timestamp, pool, context) };
         const poolHourData = { ...await intervalUpdates.updatePoolHourData(timestamp, pool, context) };
         const token0DayData = { ...await intervalUpdates.updateTokenDayData(timestamp, token0, bundle, context) };
@@ -216,9 +216,9 @@ UniswapV3Pool.Swap.handlerWithLoader({
         const token1HourData = { ...await intervalUpdates.updateTokenHourData(timestamp, token1, bundle, context) };
 
         // update volume metrics
-        uniswapDayData.volumeETH = uniswapDayData.volumeETH.plus(amountTotalETHTracked);
-        uniswapDayData.volumeUSD = uniswapDayData.volumeUSD.plus(amountTotalUSDTracked);
-        uniswapDayData.feesUSD = uniswapDayData.feesUSD.plus(feesUSD);
+        pancakeswapDayData.volumeETH = pancakeswapDayData.volumeETH.plus(amountTotalETHTracked);
+        pancakeswapDayData.volumeUSD = pancakeswapDayData.volumeUSD.plus(amountTotalUSDTracked);
+        pancakeswapDayData.feesUSD = pancakeswapDayData.feesUSD.plus(feesUSD);
 
         poolDayData.volumeUSD = poolDayData.volumeUSD.plus(amountTotalUSDTracked);
         poolDayData.volumeToken0 = poolDayData.volumeToken0!.plus(amount0Abs);
@@ -253,7 +253,7 @@ UniswapV3Pool.Swap.handlerWithLoader({
         context.Swap.set(swap);
         context.TokenDayData.set(token0DayData);
         context.TokenDayData.set(token1DayData);
-        context.UniswapDayData.set(uniswapDayData);
+        context.PancakeDayData.set(pancakeswapDayData);
         context.PoolDayData.set(poolDayData);
         context.PoolHourData.set(poolHourData);
         context.TokenHourData.set(token0HourData);

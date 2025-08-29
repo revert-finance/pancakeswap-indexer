@@ -1,10 +1,10 @@
-import { UniswapV3Pool, Token, Pool, Bundle } from "generated";
+import { PancakeV3Pool, Token, Pool, Bundle } from "generated";
 import { CHAIN_CONFIGS } from "./utils/chains";
 import { findNativePerToken, getNativePriceInUSD } from "./utils/pricing";
 import { updatePoolDayData, updatePoolHourData } from "./utils/intervalUpdates";
 
-UniswapV3Pool.Initialize.handlerWithLoader({
-    loader: async ({event, context}) => {
+PancakeV3Pool.Initialize.handlerWithLoader({
+    loader: async ({event, context}: {event: any, context: any}) => {
         const poolId = `${event.chainId}-${event.srcAddress.toLowerCase()}`;
         const pool = await context.Pool.get(poolId);
         if (!pool) return;
@@ -18,7 +18,7 @@ UniswapV3Pool.Initialize.handlerWithLoader({
         return [pool, ...res];
     },
 
-    handler: async ({event, context, loaderReturn}) => {
+    handler: async ({event, context, loaderReturn}: {event: any, context: any, loaderReturn: any}) => {
         if (!loaderReturn) return;
 
         for (const entity of loaderReturn) {

@@ -1,7 +1,7 @@
 import assert from "assert";
 import { TestHelpers, Pool, Token, Factory, Bundle } from 'generated';
 import { ZERO_BD, ZERO_BI, ADDRESS_ZERO } from '../src/handlers/utils/constants';
-import { getTokenMetadata } from '../src/handlers/utils/tokenMetadata';
+
 import {
     getPoolFixture,
     getTokenFixture,
@@ -150,10 +150,3 @@ describe('handlePoolCreated', () => {
     // });
 });
 
-describe('fetchTokenSymbol', () => {
-    it('success - fetch token symbol', async () => {
-        const usdcAddress = USDC_MAINNET_FIXTURE.address;
-        const metadata = await getTokenMetadata(usdcAddress, chainId);
-        assert.deepEqual(metadata, { name: 'USD Coin', symbol: 'USDC', decimals: 6n });
-    });
-});

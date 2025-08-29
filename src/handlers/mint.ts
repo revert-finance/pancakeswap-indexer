@@ -1,11 +1,11 @@
-import { UniswapV3Pool, Token, Pool, Bundle, Factory, Tick, BigDecimal } from "generated";
+import { PancakeV3Pool, Token, Pool, Bundle, Factory, Tick, BigDecimal } from "generated";
 import { convertTokenToDecimal, loadTransaction, fastExponentiation, safeDiv } from './utils/index';
 import { ONE_BI, ZERO_BI, ONE_BD } from './utils/constants';
 import { CHAIN_CONFIGS } from "./utils/chains";
 import * as intervalUpdates from './utils/intervalUpdates';
 
 
-UniswapV3Pool.Mint.handlerWithLoader({
+PancakeV3Pool.Mint.handlerWithLoader({
     loader: async ({ event, context }) => {
         const { factoryAddress } = CHAIN_CONFIGS[event.chainId];
         const poolId = `${event.chainId}-${event.srcAddress.toLowerCase()}`;
@@ -166,7 +166,7 @@ UniswapV3Pool.Mint.handlerWithLoader({
         // TODO: Update Tick's volume, fees, and liquidity provider count. Computing these on the tick
         // level requires reimplementing some of the swapping code from v3-core.
 
-        intervalUpdates.updateUniswapDayData(timestamp, event.chainId, factory, context);
+        intervalUpdates.updatePancakeDayData(timestamp, event.chainId, factory, context);
         intervalUpdates.updatePoolDayData(timestamp, pool, context);
         intervalUpdates.updatePoolHourData(timestamp, pool, context);
         intervalUpdates.updateTokenDayData(timestamp, token0, bundle, context);

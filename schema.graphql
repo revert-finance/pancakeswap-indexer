@@ -309,17 +309,17 @@ type Collect {
   logIndex: BigInt
 }
 
-# Data accumulated and condensed into day stats for all of Uniswap
-type UniswapDayData {
+# Data accumulated and condensed into day stats for all of Pancake
+type PancakeDayData {
   # timestamp rounded to current day by dividing by 86400
   id: ID!
   # timestamp rounded to current day by dividing by 86400
   date: Int! @index
-  # total daily volume in Uniswap derived in terms of ETH
+  # total daily volume in Pancake derived in terms of ETH
   volumeETH: BigDecimal!
-  # total daily volume in Uniswap derived in terms of USD
+  # total daily volume in Pancake derived in terms of USD
   volumeUSD: BigDecimal!
-  # total daily volume in Uniswap derived in terms of USD untracked
+  # total daily volume in Pancake derived in terms of USD untracked
   volumeUSDUntracked: BigDecimal!
   # fees in USD
   feesUSD: BigDecimal!

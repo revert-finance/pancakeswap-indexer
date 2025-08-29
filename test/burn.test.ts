@@ -16,7 +16,7 @@ import {
     blockNumber
 } from './constants';
 
-const { MockDb, UniswapV3Pool } = TestHelpers;
+const { MockDb, PancakeV3Pool } = TestHelpers;
 const logIndex = 1000;
 const txFrom = '0xa79d3B28A109F0E3E4919c9715748dB6D88f313f';
 const txHash = "0x26b168e005a168b28d518675435c9f51816697c086deef7377e0018e4eb65dc9";
@@ -40,7 +40,7 @@ const BURN_FIXTURE: BurnFixture = {
     amount1: ZERO_BI,
 };
 
-const BURN_EVENT = UniswapV3Pool.Burn.createMockEvent({
+const BURN_EVENT = PancakeV3Pool.Burn.createMockEvent({
     ...BURN_FIXTURE,
     mockEventData: {
         srcAddress: USDC_WETH_03_MAINNET_POOL,
@@ -125,7 +125,7 @@ describe('handleBurn', async () => {
         };
 
         let newMockDb = mockDb.entities.Pool.set(pool);
-        newMockDb = await UniswapV3Pool.Burn.processEvent({ event: BURN_EVENT, mockDb: newMockDb });
+        newMockDb = await PancakeV3Pool.Burn.processEvent({ event: BURN_EVENT, mockDb: newMockDb });
 
         const amountToken0 = convertTokenToDecimal(BURN_FIXTURE.amount0, BigInt(USDC_MAINNET_FIXTURE.decimals));
         const amountToken1 = convertTokenToDecimal(BURN_FIXTURE.amount1, BigInt(WETH_MAINNET_FIXTURE.decimals));
@@ -200,7 +200,7 @@ describe('handleBurn', async () => {
         };
         const liquidityBeforeBurn = pool.liquidity;
         let newMockDb = mockDb.entities.Pool.set(pool);
-        newMockDb = await UniswapV3Pool.Burn.processEvent({ event: BURN_EVENT, mockDb: newMockDb });
+        newMockDb = await PancakeV3Pool.Burn.processEvent({ event: BURN_EVENT, mockDb: newMockDb });
         const actualPool: Pool = newMockDb.entities.Pool.get(poolId);
 
         // liquidity should not be updated

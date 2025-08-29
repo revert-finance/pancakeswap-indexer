@@ -1,14 +1,14 @@
-import { UniswapV3Factory, Bundle, Token, Pool } from "generated";
+import { PancakeV3Factory, Bundle, Token, Pool } from "generated";
 import { ZERO_BD, ZERO_BI, ONE_BI, ADDRESS_ZERO } from "./utils/constants";
 import { CHAIN_CONFIGS } from "./utils/chains";
 import { isAddressInList } from "./utils/index";
 import { getTokenMetadataEffect } from "./utils/tokenMetadataEffect";
 
-UniswapV3Factory.PoolCreated.contractRegister(({ event, context }) => {
-  context.addUniswapV3Pool(event.params.pool);
+PancakeV3Factory.PoolCreated.contractRegister(({ event, context }) => {
+  context.addPancakeV3Pool(event.params.pool);
 });
 
-UniswapV3Factory.PoolCreated.handlerWithLoader({
+PancakeV3Factory.PoolCreated.handlerWithLoader({
   loader: async ({ event, context }) => {
     const { factoryAddress } = CHAIN_CONFIGS[event.chainId];
     const { token0Address, token1Address } = {

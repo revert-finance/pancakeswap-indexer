@@ -51,8 +51,8 @@ export interface StaticTokenDefinition {
 
 export const CHAIN_CONFIGS: { [chainId: number]: ChainConfig } = {
   [ChainId.MAINNET]: {
-    factoryAddress: "0x1f98431c8ad98523631ae4a59f267346ea31f984",
-    stablecoinWrappedNativePoolId: "0x8ad599c3a0ff1de082011efddc58f1908eb6e6d8",
+    factoryAddress: "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
+    stablecoinWrappedNativePoolId: "0x702283A9B82445EAAB6A2C7abFA8551bF4AB9f3b",
     stablecoinIsToken0: true,
     wrappedNativeAddress: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", // WETH
     minimumNativeLocked: new BigDecimal("20"),
@@ -131,132 +131,131 @@ export const CHAIN_CONFIGS: { [chainId: number]: ChainConfig } = {
       name: "Ethereum",
       decimals: BigInt(18),
     },
+  // [ChainId.ARBITRUM_ONE]: {
+  //   factoryAddress: "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
+  //   stablecoinWrappedNativePoolId: "0x17c14d2c404d167802b16c450d3c99f88f2c4f4d",
+  //   stablecoinIsToken0: false,
+  //   wrappedNativeAddress: "0x82af49447d8a07e3bd95bd0d56f35241523fbab1", // WETH
+  //   minimumNativeLocked: new BigDecimal("20"),
+  //   stablecoinAddresses: [
+  //     "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8", // USDC.e
+  //     "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1", // DAI
+  //     "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9", // USDT
+  //     "0xaf88d065e77c8cc2239327c5edb3a432268e5831", // USDC
+  //   ],
+  //   whitelistTokens: [
+  //     "0x82af49447d8a07e3bd95bd0d56f35241523fbab1", // WETH
+  //     "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8", // USDC.e
+  //     "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1", // DAI
+  //     "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9", // USDT
+  //     "0xaf88d065e77c8cc2239327c5edb3a432268e5831", // USDC
+  //     "0x0000000000000000000000000000000000000000", // Native ETH
+  //   ],
+  //   tokenOverrides: [],
+  //   poolsToSkip: [],
+  //   poolMappings: [],
+  //   nativeTokenDetails: {
+  //     symbol: "ETH",
+  //     name: "Ethereum",
+  //     decimals: BigInt(18),
+  //   },
   },
-  [ChainId.ARBITRUM_ONE]: {
-    factoryAddress: "0x1F98431c8aD98523631AE4a59f267346ea31F984",
-    stablecoinWrappedNativePoolId: "0x17c14d2c404d167802b16c450d3c99f88f2c4f4d",
-    stablecoinIsToken0: false,
-    wrappedNativeAddress: "0x82af49447d8a07e3bd95bd0d56f35241523fbab1", // WETH
-    minimumNativeLocked: new BigDecimal("20"),
-    stablecoinAddresses: [
-      "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8", // USDC.e
-      "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1", // DAI
-      "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9", // USDT
-      "0xaf88d065e77c8cc2239327c5edb3a432268e5831", // USDC
-    ],
-    whitelistTokens: [
-      "0x82af49447d8a07e3bd95bd0d56f35241523fbab1", // WETH
-      "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8", // USDC.e
-      "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1", // DAI
-      "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9", // USDT
-      "0xaf88d065e77c8cc2239327c5edb3a432268e5831", // USDC
-      "0x0000000000000000000000000000000000000000", // Native ETH
-    ],
-    tokenOverrides: [],
-    poolsToSkip: [],
-    poolMappings: [],
-    nativeTokenDetails: {
-      symbol: "ETH",
-      name: "Ethereum",
-      decimals: BigInt(18),
-    },
-  },
-  [ChainId.OPTIMISM]: {
-    factoryAddress: "0x1f98431c8ad98523631ae4a59f267346ea31f984",
-    stablecoinWrappedNativePoolId: "0x03af20bdaaffb4cc0a521796a223f7d85e2aac31",
-    stablecoinIsToken0: false,
-    wrappedNativeAddress: "0x4200000000000000000000000000000000000006", // WETH
-    minimumNativeLocked: new BigDecimal("10"),
-    stablecoinAddresses: [
-      "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1", // DAI
-      "0x7f5c764cbc14f9669b88837ca1490cca17c31607", // USDC.e
-      "0x94b008aa00579c1307b0ef2c499ad98a8ce58e58", // USDT
-      "0x0b2c639c533813f4aa9d7837caf62653d097ff85", // USDC
-    ],
-    whitelistTokens: [
-      "0x4200000000000000000000000000000000000006", // WETH
-      "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1", // DAI
-      "0x7f5c764cbc14f9669b88837ca1490cca17c31607", // USDC.e
-      "0x94b008aa00579c1307b0ef2c499ad98a8ce58e58", // USDT
-      "0x4200000000000000000000000000000042000000", // OP
-      "0x0b2c639c533813f4aa9d7837caf62653d097ff85", // USDC
-      "0x0000000000000000000000000000000000000000", // Native ETH
-    ],
-    tokenOverrides: [
-      {
-        address: "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
-        symbol: "WETH",
-        name: "Wrapped Ethereum",
-        decimals: 18n,
-      },
-    ],
-    poolsToSkip: [
-      "0x282b7d6bef6c78927f394330dca297eca2bd18cd",
-      "0x5738de8d0b864d5ef5d65b9e05b421b71f2c2eb4",
-      "0x5500721e5a063f0396c5e025a640e8491eb89aac",
-      "0x1ffd370f9d01f75de2cc701956886acec9749e80",
-    ],
-    poolMappings: [],
-    nativeTokenDetails: {
-      symbol: "ETH",
-      name: "Ethereum",
-      decimals: BigInt(18),
-    },
-  },
-  [ChainId.BASE]: {
-    factoryAddress: "0x33128a8fc17869897dce68ed026d694621f6fdfd",
-    stablecoinWrappedNativePoolId: "0x4c36388be6f416a29c8d8eee81c771ce6be14b18",
-    stablecoinIsToken0: false,
-    wrappedNativeAddress: "0x4200000000000000000000000000000000000006", // WETH
-    minimumNativeLocked: new BigDecimal("4"),
-    stablecoinAddresses: [
-      "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913", // USDC
-    ],
-    whitelistTokens: [
-      "0x4200000000000000000000000000000000000006", // WETH
-      "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913", // USDC
-      "0x0000000000000000000000000000000000000000", // Native ETH
-    ],
-    tokenOverrides: [],
-    poolsToSkip: [],
-    poolMappings: [],
-    nativeTokenDetails: {
-      symbol: "ETH",
-      name: "Ethereum",
-      decimals: BigInt(18),
-    },
-  },
-  [ChainId.MATIC]: {
-    factoryAddress: "0x1f98431c8ad98523631ae4a59f267346ea31f984",
-    stablecoinWrappedNativePoolId: "0xa374094527e1673a86de625aa59517c5de346d32",
-    stablecoinIsToken0: false,
-    wrappedNativeAddress: "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270", // WMATIC
-    minimumNativeLocked: new BigDecimal("20000"),
-    stablecoinAddresses: [
-      "0x2791bca1f2de4661ed88a30c99a7a9449aa84174", // USDC.e
-      "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063", // DAI
-      "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359", // USDC
-    ],
-    whitelistTokens: [
-      "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270", // WMATIC
-      "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619", // WETH
-      "0x2791bca1f2de4661ed88a30c99a7a9449aa84174", // USDC.e
-      "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063", // DAI
-      "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359", // USDC
-      "0x0000000000000000000000000000000000000000", // Native MATIC
-    ],
-    tokenOverrides: [],
-    poolsToSkip: [],
-    poolMappings: [],
-    nativeTokenDetails: {
-      symbol: "MATIC",
-      name: "Polygon",
-      decimals: BigInt(18),
-    },
-  },
+  // [ChainId.OPTIMISM]: {
+  //   factoryAddress: "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
+  //   stablecoinWrappedNativePoolId: "0x03af20bdaaffb4cc0a521796a223f7d85e2aac31",
+  //   stablecoinIsToken0: false,
+  //   wrappedNativeAddress: "0x4200000000000000000000000000000000000006", // WETH
+  //   minimumNativeLocked: new BigDecimal("10"),
+  //   stablecoinAddresses: [
+  //     "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1", // DAI
+  //     "0x7f5c764cbc14f9669b88837ca1490cca17c31607", // USDC.e
+  //     "0x94b008aa00579c1307b0ef2c499ad98a8ce58e58", // USDT
+  //     "0x0b2c639c533813f4aa9d7837caf62653d097ff85", // USDC
+  //   ],
+  //   whitelistTokens: [
+  //     "0x4200000000000000000000000000000000000006", // WETH
+  //     "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1", // DAI
+  //     "0x7f5c764cbc14f9669b88837ca1490cca17c31607", // USDC.e
+  //     "0x94b008aa00579c1307b0ef2c499ad98a8ce58e58", // USDT
+  //     "0x4200000000000000000000000000000042000000", // OP
+  //     "0x0b2c639c533813f4aa9d7837caf62653d097ff85", // USDC
+  //     "0x0000000000000000000000000000000000000000", // Native ETH
+  //   ],
+  //   tokenOverrides: [
+  //     {
+  //       address: "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+  //       symbol: "WETH",
+  //       name: "Wrapped Ethereum",
+  //       decimals: 18n,
+  //     },
+  //   ],
+  //   poolsToSkip: [
+  //     "0x282b7d6bef6c78927f394330dca297eca2bd18cd",
+  //     "0x5738de8d0b864d5ef5d65b9e05b421b71f2c2eb4",
+  //     "0x5500721e5a063f0396c5e025a640e8491eb89aac",
+  //     "0x1ffd370f9d01f75de2cc701956886acec9749e80",
+  //   ],
+  //   poolMappings: [],
+  //   nativeTokenDetails: {
+  //     symbol: "ETH",
+  //     name: "Ethereum",
+  //     decimals: BigInt(18),
+  //   },
+  // },
+  // [ChainId.BASE]: {
+  //   factoryAddress: "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
+  //   stablecoinWrappedNativePoolId: "0xE9d76696f8A35e2E2520e3125875C3af23f1E69c",
+  //   stablecoinIsToken0: false,
+  //   wrappedNativeAddress: "0x4200000000000000000000000000000000000006", // WETH
+  //   minimumNativeLocked: new BigDecimal("4"),
+  //   stablecoinAddresses: [
+  //     "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913", // USDC
+  //   ],
+  //   whitelistTokens: [
+  //     "0x4200000000000000000000000000000000000006", // WETH
+  //     "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913", // USDC
+  //     "0x0000000000000000000000000000000000000000", // Native ETH
+  //   ],
+  //   tokenOverrides: [],
+  //   poolsToSkip: [],
+  //   poolMappings: [],
+  //   nativeTokenDetails: {
+  //     symbol: "ETH",
+  //     name: "Ethereum",
+  //     decimals: BigInt(18),
+  //   },
+  // },
+  // [ChainId.MATIC]: {
+  //   factoryAddress: "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
+  //   stablecoinWrappedNativePoolId: "0xa374094527e1673a86de625aa59517c5de346d32",
+  //   stablecoinIsToken0: false,
+  //   wrappedNativeAddress: "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270", // WMATIC
+  //   minimumNativeLocked: new BigDecimal("20000"),
+  //   stablecoinAddresses: [
+  //     "0x2791bca1f2de4661ed88a30c99a7a9449aa84174", // USDC.e
+  //     "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063", // DAI
+  //     "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359", // USDC
+  //   ],
+  //   whitelistTokens: [
+  //     "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270", // WMATIC
+  //     "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619", // WETH
+  //     "0x2791bca1f2de4661ed88a30c99a7a9449aa84174", // USDC.e
+  //     "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063", // DAI
+  //     "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359", // USDC
+  //     "0x0000000000000000000000000000000000000000", // Native MATIC
+  //   ],
+  //   tokenOverrides: [],
+  //   poolsToSkip: [],
+  //   poolMappings: [],
+  //   nativeTokenDetails: {
+  //     symbol: "MATIC",
+  //     name: "Polygon",
+  //     decimals: BigInt(18),
+  //   },
+  // },
   [ChainId.BSC]: {
-    factoryAddress: "0xdb1d10011ad0ff90774d0c6bb92e5c5c8b4461f7",
-    stablecoinWrappedNativePoolId: "0x6fe9e9de56356f7edbfcbb29fab7cd69471a4869",
+    factoryAddress: "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
+    stablecoinWrappedNativePoolId: "0x36696169c63e42cd08ce11f5deebbcebae652050",
     stablecoinIsToken0: true,
     wrappedNativeAddress: "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c", // WBNB
     minimumNativeLocked: new BigDecimal("100"),
@@ -278,113 +277,113 @@ export const CHAIN_CONFIGS: { [chainId: number]: ChainConfig } = {
       name: "Binance Coin",
       decimals: BigInt(18),
     },
-  },
-  [ChainId.AVALANCHE]: {
-    factoryAddress: "0x740b1c1de25031c31ff4fc9a62f554a55cdc1bad",
-    stablecoinWrappedNativePoolId: "0xfae3f424a0a47706811521e3ee268f00cfb5c45e",
-    stablecoinIsToken0: false,
-    wrappedNativeAddress: "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7", // WAVAX
-    minimumNativeLocked: new BigDecimal("1000"),
-    stablecoinAddresses: [
-      "0xd586e7f844cea2f87f50152665bcbc2c279d8d70", // DAI.e
-      "0xba7deebbfc5fa1100fb055a87773e1e99cd3507a", // DAI
-      "0xa7d7079b0fead91f3e65f86e8915cb59c1a4c664", // USDC.e
-      "0xb97ef9ef8734c71904d8002f8b6bc66dd9c48a6e", // USDC
-      "0xc7198437980c041c805a1edcba50c1ce5db95118", // USDT.e
-      "0x9702230a8ea53601f5cd2dc00fdbc13d4df4a8c7", // USDT
-    ],
-    whitelistTokens: [
-      "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7", // WAVAX
-      "0xd586e7f844cea2f87f50152665bcbc2c279d8d70", // DAI.e
-      "0xba7deebbfc5fa1100fb055a87773e1e99cd3507a", // DAI
-      "0xa7d7079b0fead91f3e65f86e8915cb59c1a4c664", // USDC.e
-      "0xb97ef9ef8734c71904d8002f8b6bc66dd9c48a6e", // USDC
-      "0xc7198437980c041c805a1edcba50c1ce5db95118", // USDT.e
-      "0x9702230a8ea53601f5cd2dc00fdbc13d4df4a8c7", // USDT
-      "0x130966628846bfd36ff31a822705796e8cb8c18d", // MIM
-      // "0x0000000000000000000000000000000000000000", // Native AVAX
-    ],
-    tokenOverrides: [],
-    poolsToSkip: [],
-    poolMappings: [],
-    nativeTokenDetails: {
-      symbol: "AVAX",
-      name: "Avalanche",
-      decimals: BigInt(18),
-    },
-  },
-  [ChainId.BLAST]: {
-    factoryAddress: "0x792edade80af5fc680d96a2ed80a44247d2cf6fd",
-    stablecoinWrappedNativePoolId: "0xf52b4b69123cbcf07798ae8265642793b2e8990c",
-    stablecoinIsToken0: true,
-    wrappedNativeAddress: "0x4300000000000000000000000000000000000004", // WETH
-    minimumNativeLocked: new BigDecimal("1"),
-    stablecoinAddresses: [
-      "0x4300000000000000000000000000000000000003", // USDB
-    ],
-    whitelistTokens: [
-      "0x4300000000000000000000000000000000000004", // WETH
-      "0x4300000000000000000000000000000000000003", // USDB
-      "0x0000000000000000000000000000000000000000", // Native ETH
-    ],
-    tokenOverrides: [],
-    poolsToSkip: [],
-    poolMappings: [],
-    nativeTokenDetails: {
-      symbol: "ETH",
-      name: "Ethereum",
-      decimals: BigInt(18),
-    },
-  },
-  [ChainId.ZORA]: {
-    factoryAddress: "0x7145f8aeef1f6510e92164038e1b6f8cb2c42cbb",
-    stablecoinWrappedNativePoolId: "0xbc59f8f3b275aa56a90d13bae7cce5e6e11a3b17",
-    stablecoinIsToken0: false,
-    wrappedNativeAddress: "0x4200000000000000000000000000000000000006", // WETH
-    minimumNativeLocked: new BigDecimal("1"),
-    stablecoinAddresses: [
-      "0xcccccccc7021b32ebb4e8c08314bd62f7c653ec4", // USDzC
-    ],
-    whitelistTokens: [
-      "0x4200000000000000000000000000000000000006", // WETH
-      "0xcccccccc7021b32ebb4e8c08314bd62f7c653ec4", // USDzC
-      "0x0000000000000000000000000000000000000000", // Native ETH
-    ],
-    tokenOverrides: [],
-    poolsToSkip: [],
-    poolMappings: [],
-    nativeTokenDetails: {
-      symbol: "ETH",
-      name: "Ethereum",
-      decimals: BigInt(18),
-    },
-  },
-  [ChainId.WORLD]: {
-    factoryAddress: "0x7a5028bda40e7b173c278c5342087826455ea25a",
-    stablecoinWrappedNativePoolId: "0x5f835420502a7702de50cd0e78d8aa3608b2137e",
-    stablecoinIsToken0: false,
-    wrappedNativeAddress: "0x4200000000000000000000000000000000000006", // WETH
-    minimumNativeLocked: new BigDecimal("1"),
-    stablecoinAddresses: [
-      "0x79a02482a880bce3f13e09da970dc34db4cd24d1", // USDC.e
-    ],
-    whitelistTokens: [
-      "0x4200000000000000000000000000000000000006", // WETH
-      "0x79a02482a880bce3f13e09da970dc34db4cd24d1", // USDC.e
-      "0x03c7054bcb39f7b2e5b2c7acb37583e32d70cfa3", // WBTC
-      "0x2cfc85d8e48f8eab294be644d9e25c3030863003", // WLD
-      "0x859dbe24b90c9f2f7742083d3cf59ca41f55be5d", // sDAI
-      "0x0000000000000000000000000000000000000000", // Native ETH
-    ],
-    tokenOverrides: [],
-    poolsToSkip: [],
-    poolMappings: [],
-    nativeTokenDetails: {
-      symbol: "ETH",
-      name: "Ethereum",
-      decimals: BigInt(18),
-    },
-  },
+  }
+  // [ChainId.AVALANCHE]: {
+  //   factoryAddress: "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
+  //   stablecoinWrappedNativePoolId: "0xfae3f424a0a47706811521e3ee268f00cfb5c45e",
+  //   stablecoinIsToken0: false,
+  //   wrappedNativeAddress: "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7", // WAVAX
+  //   minimumNativeLocked: new BigDecimal("1000"),
+  //   stablecoinAddresses: [
+  //     "0xd586e7f844cea2f87f50152665bcbc2c279d8d70", // DAI.e
+  //     "0xba7deebbfc5fa1100fb055a87773e1e99cd3507a", // DAI
+  //     "0xa7d7079b0fead91f3e65f86e8915cb59c1a4c664", // USDC.e
+  //     "0xb97ef9ef8734c71904d8002f8b6bc66dd9c48a6e", // USDC
+  //     "0xc7198437980c041c805a1edcba50c1ce5db95118", // USDT.e
+  //     "0x9702230a8ea53601f5cd2dc00fdbc13d4df4a8c7", // USDT
+  //   ],
+  //   whitelistTokens: [
+  //     "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7", // WAVAX
+  //     "0xd586e7f844cea2f87f50152665bcbc2c279d8d70", // DAI.e
+  //     "0xba7deebbfc5fa1100fb055a87773e1e99cd3507a", // DAI
+  //     "0xa7d7079b0fead91f3e65f86e8915cb59c1a4c664", // USDC.e
+  //     "0xb97ef9ef8734c71904d8002f8b6bc66dd9c48a6e", // USDC
+  //     "0xc7198437980c041c805a1edcba50c1ce5db95118", // USDT.e
+  //     "0x9702230a8ea53601f5cd2dc00fdbc13d4df4a8c7", // USDT
+  //     "0x130966628846bfd36ff31a822705796e8cb8c18d", // MIM
+  //     // "0x0000000000000000000000000000000000000000", // Native AVAX
+  //   ],
+  //   tokenOverrides: [],
+  //   poolsToSkip: [],
+  //   poolMappings: [],
+  //   nativeTokenDetails: {
+  //     symbol: "AVAX",
+  //     name: "Avalanche",
+  //     decimals: BigInt(18),
+  //   },
+  // },
+  // [ChainId.BLAST]: {
+  //   factoryAddress: "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
+  //   stablecoinWrappedNativePoolId: "0xf52b4b69123cbcf07798ae8265642793b2e8990c",
+  //   stablecoinIsToken0: true,
+  //   wrappedNativeAddress: "0x4300000000000000000000000000000000000004", // WETH
+  //   minimumNativeLocked: new BigDecimal("1"),
+  //   stablecoinAddresses: [
+  //     "0x4300000000000000000000000000000000000003", // USDB
+  //   ],
+  //   whitelistTokens: [
+  //     "0x4300000000000000000000000000000000000004", // WETH
+  //     "0x4300000000000000000000000000000000000003", // USDB
+  //     "0x0000000000000000000000000000000000000000", // Native ETH
+  //   ],
+  //   tokenOverrides: [],
+  //   poolsToSkip: [],
+  //   poolMappings: [],
+  //   nativeTokenDetails: {
+  //     symbol: "ETH",
+  //     name: "Ethereum",
+  //     decimals: BigInt(18),
+  //   },
+  // },
+  // [ChainId.ZORA]: {
+  //   factoryAddress: "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
+  //   stablecoinWrappedNativePoolId: "0xbc59f8f3b275aa56a90d13bae7cce5e6e11a3b17",
+  //   stablecoinIsToken0: false,
+  //   wrappedNativeAddress: "0x4200000000000000000000000000000000000006", // WETH
+  //   minimumNativeLocked: new BigDecimal("1"),
+  //   stablecoinAddresses: [
+  //     "0xcccccccc7021b32ebb4e8c08314bd62f7c653ec4", // USDzC
+  //   ],
+  //   whitelistTokens: [
+  //     "0x4200000000000000000000000000000000000006", // WETH
+  //     "0xcccccccc7021b32ebb4e8c08314bd62f7c653ec4", // USDzC
+  //     "0x0000000000000000000000000000000000000000", // Native ETH
+  //   ],
+  //   tokenOverrides: [],
+  //   poolsToSkip: [],
+  //   poolMappings: [],
+  //   nativeTokenDetails: {
+  //     symbol: "ETH",
+  //     name: "Ethereum",
+  //     decimals: BigInt(18),
+  //   },
+  // },
+  // [ChainId.WORLD]: {
+  //   factoryAddress: "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
+  //   stablecoinWrappedNativePoolId: "0x5f835420502a7702de50cd0e78d8aa3608b2137e",
+  //   stablecoinIsToken0: false,
+  //   wrappedNativeAddress: "0x4200000000000000000000000000000000000006", // WETH
+  //   minimumNativeLocked: new BigDecimal("1"),
+  //   stablecoinAddresses: [
+  //     "0x79a02482a880bce3f13e09da970dc34db4cd24d1", // USDC.e
+  //   ],
+  //   whitelistTokens: [
+  //     "0x4200000000000000000000000000000000000006", // WETH
+  //     "0x79a02482a880bce3f13e09da970dc34db4cd24d1", // USDC.e
+  //     "0x03c7054bcb39f7b2e5b2c7acb37583e32d70cfa3", // WBTC
+  //     "0x2cfc85d8e48f8eab294be644d9e25c3030863003", // WLD
+  //     "0x859dbe24b90c9f2f7742083d3cf59ca41f55be5d", // sDAI
+  //     "0x0000000000000000000000000000000000000000", // Native ETH
+  //   ],
+  //   tokenOverrides: [],
+  //   poolsToSkip: [],
+  //   poolMappings: [],
+  //   nativeTokenDetails: {
+  //     symbol: "ETH",
+  //     name: "Ethereum",
+  //     decimals: BigInt(18),
+  //   },
+  // },
 };
 
 // Helper function to get chain config by chainId

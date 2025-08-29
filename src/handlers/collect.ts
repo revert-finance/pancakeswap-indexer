@@ -1,4 +1,4 @@
-import { UniswapV3Pool, Token, Pool, Bundle, Factory } from "generated";
+import { PancakeV3Pool, Token, Pool, Bundle, Factory } from "generated";
 import { CHAIN_CONFIGS } from "./utils/chains";
 import { ONE_BI, ZERO_BI } from './utils/constants';
 import { convertTokenToDecimal, loadTransaction } from './utils/index';
@@ -6,7 +6,7 @@ import { getTrackedAmountUSD } from './utils/pricing';
 import * as intervalUpdates from './utils/intervalUpdates';
 
 
-UniswapV3Pool.Collect.handlerWithLoader({
+PancakeV3Pool.Collect.handlerWithLoader({
     loader: async ({ event, context }) => {
         const poolId = `${event.chainId}-${event.srcAddress.toLowerCase()}`;
         const pool = await context.Pool.get(poolId);
@@ -113,7 +113,7 @@ UniswapV3Pool.Collect.handlerWithLoader({
             logIndex: BigInt(event.logIndex)
         };
 
-        intervalUpdates.updateUniswapDayData(timestamp, event.chainId, factory, context);
+        intervalUpdates.updatePancakeDayData(timestamp, event.chainId, factory, context);
         intervalUpdates.updatePoolDayData(timestamp, pool, context);
         intervalUpdates.updatePoolHourData(timestamp, pool, context);
         intervalUpdates.updateTokenDayData(timestamp, token0, bundle, context);

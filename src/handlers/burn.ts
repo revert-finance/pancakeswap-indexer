@@ -1,10 +1,10 @@
-import { UniswapV3Pool, Token, Pool, Bundle, Factory, Burn, Tick } from "generated";
+import { PancakeV3Pool, Token, Pool, Bundle, Factory, Burn, Tick } from "generated";
 import { CHAIN_CONFIGS } from "./utils/chains";
 import { convertTokenToDecimal, loadTransaction } from './utils/index';
 import { ONE_BI, ZERO_BI } from './utils/constants';
 import * as intervalUpdates from './utils/intervalUpdates';
 
-UniswapV3Pool.Burn.handlerWithLoader({
+PancakeV3Pool.Burn.handlerWithLoader({
     loader: async ({ event, context }) => {
         const { factoryAddress } = CHAIN_CONFIGS[event.chainId];
         const poolId = `${event.chainId}-${event.srcAddress.toLowerCase()}`;
@@ -71,7 +71,7 @@ UniswapV3Pool.Burn.handlerWithLoader({
         ) {
             // todo: this liquidity can be calculated from the real reserves and
             // current price instead of incrementally from every burned amount which
-            // may not be accurate: https://linear.app/uniswap/issue/DAT-336/fix-pool-liquidity
+            // may not be accurate: https://linear.app/pancakeswap/issue/DAT-336/fix-pool-liquidity
             pool.liquidity = pool.liquidity - event.params.amount;
         }
 
@@ -116,7 +116,7 @@ UniswapV3Pool.Burn.handlerWithLoader({
             context.Tick.set(upperTick);
         }
 
-        intervalUpdates.updateUniswapDayData(timestamp, event.chainId, factory, context);
+        intervalUpdates.updatePancakeDayData(timestamp, event.chainId, factory, context);
         intervalUpdates.updatePoolDayData(timestamp, pool, context);
         intervalUpdates.updatePoolHourData(timestamp, pool, context);
         intervalUpdates.updateTokenDayData(timestamp, token0, bundle, context);

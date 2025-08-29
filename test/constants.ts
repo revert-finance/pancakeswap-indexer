@@ -3,7 +3,7 @@ import { ChainConfig } from '../src/handlers/utils/chains';
 import { ZERO_BD, ZERO_BI } from '../src/handlers/utils/constants';
 import { isAddressInList } from '../src/handlers/utils/index';
 
-const { UniswapV3Factory } = TestHelpers;
+const { PancakeV3Factory } = TestHelpers;
 
 const FACTORY_ADDRESS = '0x1F98431c8aD98523631AE4a59f267346ea31F984';
 const USDC_MAINNET_ADDRESS = '0xaf88d065e77c8cc2239327c5edb3a432268e5831';
@@ -181,7 +181,7 @@ export async function invokePoolCreatedWithMockedEthCalls(
     const token0 = getTokenFixture(pool.token0.address);
     const token1 = getTokenFixture(pool.token1.address);
 
-    const poolCreatedEvent = UniswapV3Factory.PoolCreated.createMockEvent({
+    const poolCreatedEvent = PancakeV3Factory.PoolCreated.createMockEvent({
         token0: token0.address,
         token1: token1.address,
         fee: BigInt(feeTier),
@@ -193,7 +193,7 @@ export async function invokePoolCreatedWithMockedEthCalls(
         }
     });
 
-    return UniswapV3Factory.PoolCreated.processEvent({ event: poolCreatedEvent, mockDb });
+    return PancakeV3Factory.PoolCreated.processEvent({ event: poolCreatedEvent, mockDb });
 }
 
 // More lightweight than the method above which invokes handlePoolCreated. This

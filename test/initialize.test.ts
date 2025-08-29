@@ -20,7 +20,7 @@ import {
     blockNumber
 } from './constants'
 
-const { MockDb, UniswapV3Pool } = TestHelpers;
+const { MockDb, PancakeV3Pool } = TestHelpers;
 
 interface InitializeFixture {
     sqrtPriceX96: bigint
@@ -32,7 +32,7 @@ const INITIALIZE_FIXTURE: InitializeFixture = {
     tick: 194280n,
 };
 
-const INITIALIZE_EVENT = UniswapV3Pool.Initialize.createMockEvent({
+const INITIALIZE_EVENT = PancakeV3Pool.Initialize.createMockEvent({
     sqrtPriceX96: INITIALIZE_FIXTURE.sqrtPriceX96,
     tick: INITIALIZE_FIXTURE.tick,
     mockEventData: {
@@ -60,7 +60,7 @@ describe('Initialize pool', () => {
         };
         
         mockDb = mockDb.entities.Bundle.set(bundle);
-        mockDb = await UniswapV3Pool.Initialize.processEvent({event: INITIALIZE_EVENT, mockDb});
+        mockDb = await PancakeV3Pool.Initialize.processEvent({event: INITIALIZE_EVENT, mockDb});
 
         const expectedBundle: Bundle = {
             id: chainId.toString(),

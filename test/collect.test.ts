@@ -16,7 +16,7 @@ import {
     blockNumber
 } from './constants';
 
-const { MockDb, UniswapV3Pool } = TestHelpers;
+const { MockDb, PancakeV3Pool } = TestHelpers;
 const logIndex = 1000;
 const txHash = "0x328c84a513e6146dd3cf28861e8f2445e38d251c4b8a922057c755e12281c7ea";
 
@@ -39,7 +39,7 @@ const COLLECT_FIXTURE: CollectFixture = {
     amount1: BigInt('19275229182128904')
 };
 
-const COLLECT_EVENT = UniswapV3Pool.Collect.createMockEvent({
+const COLLECT_EVENT = PancakeV3Pool.Collect.createMockEvent({
     ...COLLECT_FIXTURE,
     mockEventData: {
         logIndex,
@@ -86,7 +86,7 @@ describe('handleMint', async () => {
             
         let newMockDb = mockDb.entities.Pool.set(pool);
         const trackedCollectedAmountUSD = ZERO_BD;
-        newMockDb = await UniswapV3Pool.Collect.processEvent({ event: COLLECT_EVENT, mockDb: newMockDb });
+        newMockDb = await PancakeV3Pool.Collect.processEvent({ event: COLLECT_EVENT, mockDb: newMockDb });
 
         const collectedAmountToken0 = convertTokenToDecimal(
             COLLECT_FIXTURE.amount0,

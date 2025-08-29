@@ -16,7 +16,7 @@ import {
     blockNumber
 } from './constants';
 
-const { MockDb, UniswapV3Pool } = TestHelpers;
+const { MockDb, PancakeV3Pool } = TestHelpers;
 const logIndex = 1000;
 const txFrom = '0xa79d3B28A109F0E3E4919c9715748dB6D88f313f';
 const txHash = "0xd6005a794596212a1bdc19178e04e18eb8e9e0963d7073303bcb47d6186e757e";
@@ -42,7 +42,7 @@ const MINT_FIXTURE: MintFixture = {
     amount1: 66726312884609397n,
 };
 
-const mintEvent = UniswapV3Pool.Mint.createMockEvent({
+const mintEvent = PancakeV3Pool.Mint.createMockEvent({
     sender: MINT_FIXTURE.sender,
     owner: MINT_FIXTURE.owner,
     tickLower: MINT_FIXTURE.tickLower,
@@ -97,7 +97,7 @@ describe('handleMint', async () => {
     
         let newMockdb = mockDb.entities.Pool.set(pool);
 
-        newMockdb = await UniswapV3Pool.Mint.processEvent({ event: mintEvent, mockDb: newMockdb });
+        newMockdb = await PancakeV3Pool.Mint.processEvent({ event: mintEvent, mockDb: newMockdb });
 
         const amountToken0 = convertTokenToDecimal(MINT_FIXTURE.amount0, BigInt(USDC_MAINNET_FIXTURE.decimals));
         const amountToken1 = convertTokenToDecimal(MINT_FIXTURE.amount1, BigInt(WETH_MAINNET_FIXTURE.decimals));
@@ -195,7 +195,7 @@ describe('handleMint', async () => {
         let newMockDb = mockDb.entities.Pool.set(pool);
         const liquidityBeforeMint = pool.liquidity;
 
-        newMockDb = await UniswapV3Pool.Mint.processEvent({ event: mintEvent, mockDb: newMockDb });
+        newMockDb = await PancakeV3Pool.Mint.processEvent({ event: mintEvent, mockDb: newMockDb });
         pool = newMockDb.entities.Pool.get(poolId);
 
         // liquidity should not be updated
