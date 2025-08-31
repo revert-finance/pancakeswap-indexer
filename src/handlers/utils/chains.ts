@@ -52,7 +52,7 @@ export interface StaticTokenDefinition {
 export const CHAIN_CONFIGS: { [chainId: number]: ChainConfig } = {
   [ChainId.MAINNET]: {
     factoryAddress: "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
-    stablecoinWrappedNativePoolId: "0x1ac1a8feaaaea1900c4166deeed0c11cc10669d36",
+    stablecoinWrappedNativePoolId: "0x1ac1a8feaaea1900c4166deeed0c11cc10669d36",
     stablecoinIsToken0: true,
     wrappedNativeAddress: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", // WETH
     minimumNativeLocked: new BigDecimal("20"),
@@ -256,7 +256,7 @@ export const CHAIN_CONFIGS: { [chainId: number]: ChainConfig } = {
   // },
   [ChainId.BSC]: {
     factoryAddress: "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
-    stablecoinWrappedNativePoolId: "0x36696169c63e42cd08ce11f5deebbcebae652050",
+    stablecoinWrappedNativePoolId: "0x36696169C63e42cd08ce11f5deeBbCeBae652050",
     stablecoinIsToken0: true,
     wrappedNativeAddress: "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c", // WBNB
     minimumNativeLocked: new BigDecimal("100"),
